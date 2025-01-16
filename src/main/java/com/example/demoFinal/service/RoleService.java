@@ -28,7 +28,11 @@ public class RoleService {
     public List<RoleDto> getAllRoles(){
         return roleMapper.roleListEntityToDto(roleRepository.findAll());
     }
-
+    public List<Role> findAllRoles() {
+        List<Role> roles = roleRepository.findAll();
+        System.out.println("Roles: " + roles);
+        return roles;
+    }
     public RoleDto createRole(Role role){
         return roleMapper.roleEntityToDto(roleRepository.save(role));
     }

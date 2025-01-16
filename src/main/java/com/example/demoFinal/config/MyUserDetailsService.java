@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -26,14 +25,14 @@ public class MyUserDetailsService implements UserDetailsService {
         Optional<User> userByUsername = userRepository.findByUsername(username);
 
         if (userByUsername.isEmpty()) {
-            log.error("Could not find user with that username: {}", username);
+            log.error("Could not find book with that username: {}", username);
             throw new UsernameNotFoundException("Invalid credentials!");
         }
 
         User user = userByUsername.get();
 
         if (!user.getUsername().equals(username)) {
-            log.error("Could not find user with that username: {}", username);
+            log.error("Could not find book with that username: {}", username);
             throw new UsernameNotFoundException("Invalid credentials!");
         }
 

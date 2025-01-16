@@ -15,9 +15,16 @@
         <a class="header" href="/logout"><span sec:authorize="isAuthenticated()">Logout</span></a>
         <a class="header" href="/"><span sec:authorize="isAuthenticated()">Home</span></a>
         <a class="header" href="/users"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Users</span></a>
+        <a class="header" href="/books"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Books</span></a>
         <a class="header" href="/user"><span sec:authorize="isAuthenticated() and hasAuthority('USER')">User</span></a>
         <a class="header" href="/roles"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Roles</span></a></p>
     <a class="header" href="/admin"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Admin</span></a></p>
+    <a class="header" href="/users/create"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Create User</span></a>
+    <a class="header" href="/users/delete"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Delete Users</span></a>
+    <a class="header" href="/users/update"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Update User</span></a>
+    <a class="header" href="/books/create"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Create Books</span></a>
+    <a class="header" href="/books/delete"><span sec:authorize="isAuthenticated() and hasAuthority('ADMIN')">Delete Books</span></a>
+
     <p></p>
 </div>
 
@@ -45,6 +52,19 @@
             <td th:text="${user.firstName}"></td>
             <td th:text="${user.lastName}"></td>
             <td th:text="${user.emailAddress}"></td>
+        </tr>
+    </table>
+</div>
+
+<div th:fragment="books_table">
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+        </tr>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
         </tr>
     </table>
 </div>

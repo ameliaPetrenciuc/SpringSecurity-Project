@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,10 +45,6 @@ public class UserServiceImpl implements UserService{
                 .emailAddress(registrationRequest.getEmailAddress())
                 .role((roleRepository.findByRole("USER")))
                 .build();
-
-
-
-
         return this.createUser(user);
     }
 
@@ -68,6 +65,11 @@ public class UserServiceImpl implements UserService{
         return userMapper.userEntityToDto(userRepository.save(user));
     }
 
+    @Override
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUsername(username);
+
+    }
     public UserDto updateUser(User user){
         return userMapper.userEntityToDto(userRepository.save(user));
     }

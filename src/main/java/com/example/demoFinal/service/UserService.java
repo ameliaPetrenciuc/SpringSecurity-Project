@@ -6,6 +6,7 @@ import com.example.demoFinal.model.User;
 import com.example.demoFinal.dto.UserDto;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
@@ -22,6 +23,6 @@ public interface UserService {
     UserDto createUser(User user);
 
     UserDto updateUser(User user);
-
+    Optional<User> findByUsername(String username);
     void deleteUser(User user);
 }
